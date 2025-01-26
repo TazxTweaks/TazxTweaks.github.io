@@ -229,12 +229,6 @@ span{
 }
 
 @keyframes words{
-    0%, 20%{
-        content: "Rhideopts programmer⚙️";
-    }
-    21%, 40%{
-        content: "Partner of w/@Rhidex🫂";
-    }
     81%, 100%{
         content: "PC Enthusiastic.📖";
     }
