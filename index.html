@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>TazxTweaks</title>
+    <style>
+        /* Para que el video ocupe todo el fondo */
+        .home video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .home {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,9 +33,11 @@
         </nav>
     </header>
     <section class="home">
-        <div class="home-img">
-            <img src="main.jpg" alt="">
-        </div>
+        <!-- Video de fondo -->
+        <video autoplay loop muted playsinline>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
         <div class="home-content">
             <h1>Hello here 👋🏼  <span>Tazx</span></h1>
             <h3 class="typing-text">I'm a <span></span></h3>
@@ -38,10 +57,57 @@
                     <i class="fa-brands fa-instagram"></i>
                 </a>
                 <a href="https://www.tiktok.com/@tazxtweaks?is_from_webapp=1&sender_device=pc" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>                                            
+                    <i class="fa-brands fa-tiktok"></i>     
+                </a>
+
             </div>
-        </div>
-    </section>
+
+            <!-- Botón para música -->
+<button id="playMusicBtn" onclick="document.getElementById('bg-music').play()" class="music-btn">
+ Play Music
+</button>
+
+<!-- Control de volumen -->
+<label for="volume-control" style="margin-left:10px;">Volumen:</label>
+<input type="range" id="volume-control" min="0" max="100" value="50" style="vertical-align: middle;">
+
+<!-- Música oculta -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById('bg-music');
+const volumeControl = document.getElementById('volume-control');
+
+// Ajustar volumen
+volumeControl.addEventListener('input', () => {
+  music.volume = volumeControl.value / 100; // convierte 0-100 a 0-1
+});
+</script>
+
+<style>
+.music-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: #22c55e; /* verde */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.music-btn:hover {
+  background-color: #16a34a; /* verde más oscuro */
+  transform: scale(1.05);
+}
+</style>
 </body>
 </html>
